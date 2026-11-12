@@ -1,1 +1,261 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India Government Schemes & Scholarship Finder</title>
+<style>
+:root{--navy:#14213d;--blue:#2457c5;--bg:#f4f7fc;--ink:#172033;--muted:#65718a;--green:#16845b;--amber:#a86400;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;font-family:Arial, sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(120deg,#14213d,#2457c5);color:white;padding:26px 18px}
+.wrap{max-width:1150px;margin:auto;padding:0 16px}header h1{margin:0 0 8px;font-size:25px}header p{margin:0;color:#e1e9ff;line-height:1.5}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+nav button,.btn{border:0;border-radius:9px;padding:11px 15px;background:#e7edfb;color:#18366f;font-weight:700;cursor:pointer}
+nav button.active,.btn.primary{background:var(--blue);color:white}
+.panel{background:white;border-radius:14px;padding:18px;margin:14px 0;box-shadow:0 3px 16px #15264a0c}
+h2{font-size:20px;margin:0 0 14px}h3{font-size:17px;margin:0 0 8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px}
+label{display:block;font-size:13px;font-weight:700;color:#35415a;margin-bottom:6px}
+input,select{width:100%;padding:11px;border:1px solid #ccd5e5;border-radius:8px;background:white;font-size:14px;color:var(--ink)}
+small,.muted{color:var(--muted);line-height:1.45}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
+.result{border:1px solid #e0e6f0;border-radius:12px;padding:14px;margin:10px 0}
+.result h3{margin-bottom:6px}.tag{display:inline-block;border-radius:20px;padding:4px 9px;font-size:11px;font-weight:700;background:#eaf0ff;color:#214da7;margin:0 5px 7px 0}
+.tag.possible{background:#e6f5ed;color:#126b48}.tag.review{background:#fff2d8;color:#885000}
+a{color:#2457c5;font-weight:700;overflow-wrap:anywhere}
+#schemeList{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}
+.scheme{background:white;border:1px solid #e1e7f0;border-radius:12px;padding:14px}
+.scheme p{font-size:13px;color:#59657b;line-height:1.5}
+.searchrow{display:flex;gap:10px;flex-wrap:wrap}.searchrow input{flex:1;min-width:200px}
+.hidden{display:none}.notice{background:#fff8e8;border-left:4px solid #e6a23c;padding:12px;border-radius:8px;font-size:13px;line-height:1.5}
+footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Government Schemes & Scholarship Finder</h1>
+<p>Find schemes that may match your education, marks, category, income and personal details. Review the official rules before applying.</p>
+</div></header>
+<main class="wrap">
+<nav>
+<button class="active" data-tab="checker">Eligibility Checker</button>
+<button data-tab="browse">Browse All Schemes</button>
+</nav>
+<section id="checker" class="tab">
+<div class="panel">
+<h2>Enter applicant details</h2>
+<p class="muted">Fill in what you know. Leave unrelated fields blank. The checker gives an initial match, not an official approval.</p>
+<div class="grid">
+<div><label for="state">State of residence</label><select id="state"><option value="">Select state</option><option>Karnataka</option><option>Andhra Pradesh</option><option>Other</option></select></div>
+<div><label for="education">Current education</label><select id="education"><option value="">Select education</option><option>Class 8</option><option>Class 9</option><option>Class 10</option><option>Class 11</option><option>Class 12</option><option>Diploma</option><option>Undergraduate / Degree</option><option>Engineering / Technical Degree</option><option>Medical</option><option>Agriculture</option><option>Postgraduate</option><option>PhD / Research</option><option>Not studying</option></select></div>
+<div><label for="marks">Last qualifying exam marks (%)</label><input id="marks" type="number" min="0" max="100" step="0.01" placeholder="Example: 82.5"></div>
+<div><label for="income">Annual family income (₹)</label><input id="income" type="number" min="0" placeholder="Example: 250000"></div>
+<div><label for="category">Social category</label><select id="category"><option value="">Select category</option><option>General</option><option>SC</option><option>ST</option><option>OBC</option><option>EBC</option><option>DNT</option><option>Category I</option><option>IIA</option><option>IIB</option><option>IIIA</option><option>IIIB</option><option>Minority</option><option>Brahmin</option></select></div>
+<div><label for="gender">Gender</label><select id="gender"><option value="">Select</option><option>Female</option><option>Male</option><option>Other</option></select></div>
+<div><label for="age">Age</label><input id="age" type="number" min="0" max="120" placeholder="Age in years"></div>
+<div><label for="disability">Benchmark disability</label><select id="disability"><option value="">Select</option><option value="no">No</option><option value="yes">Yes</option></select></div>
+<div><label for="region">North Eastern Region resident?</label><select id="region"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select></div>
+<div><label for="farmer">Farmer family / agricultural land?</label><select id="farmer"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select></div>
+<div><label for="orphan">Orphan / eligible special family circumstance?</label><select id="orphan"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select></div>
+<div><label for="worker">Parent is a registered eligible worker?</label><select id="worker"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select></div>
+<div><label for="rural">Rural household?</label><select id="rural"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select></div>
+<div><label for="house">Family owns a pucca house?</label><select id="house"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select></div>
+<div><label for="pregnant">Pregnant / lactating woman?</label><select id="pregnant"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select></div>
+<div><label for="unemployed">Currently unemployed?</label><select id="unemployed"><option value="">Select</option><option value="yes">Yes</option><option value="no">No</option></select></div>
+</div>
+<div class="actions"><button class="btn primary" id="checkBtn">Check my eligibility</button><button class="btn" id="resetBtn">Clear details</button></div>
+</div>
+<div id="results" class="panel hidden"><h2>Possible matching schemes</h2><p class="muted" id="resultSummary"></p><div id="matchList"></div></div>
+<div class="notice">Important: This is a guidance tool based on broad scheme descriptions. Some schemes require domicile, caste/community certificates, institution lists, entrance/merit selection, family circumstances, bank/Aadhaar validation or current-year notifications. “Possible match” does not mean you are approved or guaranteed to receive money. Check the official portal for current rules, dates and application status.</div>
+</section>
+<section id="browse" class="tab hidden">
+<div class="panel"><h2>Browse schemes and official portals</h2>
+<div class="searchrow"><input id="search" placeholder="Search scheme, category or eligibility..."><select id="categoryFilter"><option value="">All categories</option></select></div>
+<p class="muted" id="count"></p></div>
+<div id="schemeList"></div>
+</section>
+</main>
+<footer>Unofficial scheme discovery tool · Verify every detail on the linked government website.</footer>
+<script>
+const schemes = [
+["Central Scholarships","NMMS","Class 8 students in eligible schools; prescribed marks and family-income limits apply.","https://scholarships.gov.in/","school"],
+["Central Scholarships","PM-USP Central Sector Scholarship","Class 12 students above the 80th percentile; family income up to ₹4.5 lakh, subject to current rules.","https://scholarships.gov.in/","12 income450000"],
+["Central Scholarships","SC Pre-Matric Scholarship","Eligible SC school students; class, income and other conditions apply.","https://scholarships.gov.in/","sc school"],
+["Central Scholarships","SC Post-Matric Scholarship","SC students studying after Class 10; income and approved-course conditions apply.","https://scholarships.gov.in/","sc post"],
+["Central Scholarships","ST Post-Matric Scholarship","ST students pursuing recognised post-matric courses; income and other rules apply.","https://scholarships.gov.in/","st post"],
+["Central Scholarships","Top Class Education for SC","Eligible SC students admitted to notified premier institutions; income and institution rules apply.","https://scholarships.gov.in/","sc higher"],
+["Central Scholarships","Higher Education Scholarship for ST","Eligible ST students in notified institutions; scheme-specific merit and income rules apply.","https://scholarships.gov.in/","st higher"],
+["Central Scholarships","PM YASASVI","Eligible OBC, EBC and DNT students; selection, class and income conditions apply.","https://yet.nta.ac.in/","obc ebc dnt school income"],
+["Central Scholarships","OBC Post-Matric Scholarship","Eligible OBC students studying after Class 10; income and course rules apply.","https://scholarships.gov.in/","obc post"],
+["Central Scholarships","Minority Pre-Matric Scholarship","Students from notified minority communities; subject to scheme availability and current rules.","https://scholarships.gov.in/","minority school"],
+["Central Scholarships","Minority Post-Matric Scholarship","Eligible minority students in covered post-matric courses; subject to availability.","https://scholarships.gov.in/","minority post"],
+["Central Scholarships","Minority Merit-cum-Means Scholarship","Minority students in eligible professional and technical courses; merit and income rules apply.","https://scholarships.gov.in/","minority technical income"],
+["Central Scholarships","Disability Pre-Matric Scholarship","Eligible school students with benchmark disabilities; class and income rules apply.","https://scholarships.gov.in/","disability school"],
+["Central Scholarships","Disability Post-Matric Scholarship","Eligible students with benchmark disabilities in post-matric courses.","https://scholarships.gov.in/","disability post"],
+["Central Scholarships","Top Class Disability Scholarship","Students with benchmark disabilities in eligible higher education institutions.","https://scholarships.gov.in/","disability higher"],
+["Central Scholarships","Ishan Uday","Eligible students from North Eastern Region pursuing undergraduate courses; income and other rules apply.","https://www.ugc.gov.in/","region ug"],
+["Central Scholarships","National Scholarship for Postgraduate Studies","Eligible postgraduate students meeting current merit and admission conditions.","https://www.ugc.gov.in/","pg"],
+["Central Scholarships","PM Scholarship for CAPF and Assam Rifles","Eligible dependent wards and widows of specified personnel; service and merit conditions apply.","https://scholarships.gov.in/","special"],
+["Central Scholarships","PM Scholarship for Railway Personnel","Eligible dependent wards and widows of specified railway personnel.","https://scholarships.gov.in/","special"],
+["Central Scholarships","PM Scholarship for Martyred Police Personnel","Eligible dependent children and widows of martyred police personnel.","https://scholarships.gov.in/","special"],
+["Central Scholarships","AICTE Pragati","Eligible girls in approved technical diploma and degree courses; family-income and admission rules apply.","https://www.aicte-india.org/","female technical"],
+["Central Scholarships","AICTE Saksham","Students with at least 40% disability in approved technical courses; other conditions apply.","https://www.aicte-india.org/","disability technical"],
+["Central Scholarships","AICTE Swanath","Eligible orphans and wards of specified deceased personnel or COVID-19 victims in approved technical courses.","https://www.aicte-india.org/","orphan technical"],
+["Central Scholarships","Beedi/Cine/IOMC/LSDM Workers Scholarship","Children of eligible registered workers studying in specified classes/courses.","https://scholarships.gov.in/","worker"],
+["Central Scholarships","National Fellowship and Scholarship for ST","Eligible ST students pursuing higher education and research; current fellowship rules apply.","https://tribal.nic.in/","st higher"],
+["Central Scholarships","INSPIRE Scholarship (SHE)","Meritorious students studying eligible basic and natural science courses.","https://online-inspire.gov.in/","science ug"],
+["Central Scholarships","KVPY Legacy Fellowship","Existing fellowship beneficiaries only; no fresh admissions.","https://dst.gov.in/","legacy"],
+["Central Scholarships","UGC National Fellowship for SC","Eligible SC research candidates under current fellowship rules.","https://www.ugc.gov.in/","sc research"],
+["Central Scholarships","UGC National Fellowship for ST","Eligible ST research candidates under current fellowship rules.","https://www.ugc.gov.in/","st research"],
+["Central Scholarships","ICAR National Talent Scholarship","Eligible students in specified agricultural undergraduate programmes.","https://icar.org.in/","agriculture ug"],
+["Central Scholarships","ICAR Postgraduate Scholarship","Students admitted to eligible agricultural postgraduate programmes.","https://icar.org.in/","agriculture pg"],
+["Central Scholarships","National Overseas Scholarship","Eligible disadvantaged-category candidates pursuing higher education abroad; income and selection rules apply.","https://nosmsje.gov.in/","overseas"],
+["Karnataka Scholarships","SSP Pre-Matric Scholarship","Eligible Karnataka students in covered categories studying at school.","https://ssp.karnataka.gov.in/","karnataka school"],
+["Karnataka Scholarships","SSP Post-Matric SC","Karnataka SC students pursuing eligible courses after Class 10.","https://ssp.postmatric.karnataka.gov.in/","karnataka sc post"],
+["Karnataka Scholarships","SSP Post-Matric ST","Karnataka ST students pursuing eligible post-matric courses.","https://ssp.postmatric.karnataka.gov.in/","karnataka st post"],
+["Karnataka Scholarships","SSP Backward Classes","Eligible Karnataka Category I, IIA, IIB, IIIA and IIIB students.","https://ssp.karnataka.gov.in/","karnataka obc post"],
+["Karnataka Scholarships","Karnataka Minority Scholarship","Eligible minority students meeting income and merit conditions.","https://dom.karnataka.gov.in/","karnataka minority"],
+["Karnataka Scholarships","Vidyasiri","Eligible Karnataka backward-class students meeting accommodation and income conditions.","https://bcwd.karnataka.gov.in/","karnataka obc income"],
+["Karnataka Scholarships","Brahmin Development Board Scholarship","Eligible Karnataka Brahmin students in notified courses.","https://karnataka.gov.in/","karnataka brahmin"],
+["Karnataka Scholarships","Karnataka Disability Scholarship","Eligible students with disabilities in recognised institutions.","https://swd.karnataka.gov.in/","karnataka disability"],
+["Karnataka Scholarships","Karnataka Fee Reimbursement","Eligible SC, ST, OBC and minority students in approved courses.","https://ssp.karnataka.gov.in/","karnataka post"],
+["Karnataka Scholarships","Karnataka Agriculture Scholarship","Eligible students in specified agriculture-related courses.","https://raitamitra.karnataka.gov.in/","karnataka agriculture"],
+["Karnataka Scholarships","Raitha Vidya Nidhi","Eligible children of farmers pursuing higher education.","https://raitamitra.karnataka.gov.in/","karnataka farmer higher"],
+["Karnataka Scholarships","Labour Welfare Board Education Assistance","Children of eligible registered workers in notified courses.","https://klwb.karnataka.gov.in/","karnataka worker"],
+["Karnataka Scholarships","Karnataka Minority Fee Reimbursement","Eligible minority students in covered courses.","https://dom.karnataka.gov.in/","karnataka minority post"],
+["Women and Girl Child","PM Matru Vandana Yojana","Eligible pregnant and lactating women subject to scheme conditions.","https://pmmvy.wcd.gov.in/","female pregnant"],
+["Women and Girl Child","Sukanya Samriddhi Yojana","Girl child below 10; account opened by parent or guardian.","https://www.nsiindia.gov.in/","female age10"],
+["Women and Girl Child","Bhagyalakshmi Karnataka","Eligible girl children from qualifying BPL families.","https://dwcd.karnataka.gov.in/","karnataka female"],
+["Women and Girl Child","Gruha Lakshmi Karnataka","Eligible woman household head on qualifying Karnataka ration card.","https://sevasindhu.karnataka.gov.in/","karnataka female"],
+["Women and Girl Child","Shakti Karnataka","Eligible Karnataka resident women and girl students under scheme rules.","https://transport.karnataka.gov.in/","karnataka female"],
+["Farmers and Agriculture","PM-KISAN","Eligible landholding farmer families; exclusions apply.","https://pmkisan.gov.in/","farmer"],
+["Farmers and Agriculture","PM Fasal Bima Yojana","Farmers growing notified crops in notified areas.","https://pmfby.gov.in/","farmer"],
+["Farmers and Agriculture","Kisan Credit Card","Eligible farmers, tenant farmers and sharecroppers.","https://www.myscheme.gov.in/","farmer"],
+["Farmers and Agriculture","PM Krishi Sinchai Yojana","Eligible farmers and irrigation projects.","https://agriwelfare.gov.in/","farmer"],
+["Farmers and Agriculture","Soil Health Card","Farmers and agricultural landholders.","https://soilhealth.dac.gov.in/","farmer"],
+["Farmers and Agriculture","Raitha Siri Karnataka","Eligible Karnataka farmers under notified conditions.","https://raitamitra.karnataka.gov.in/","karnataka farmer"],
+["Farmers and Agriculture","Krishi Bhagya Karnataka","Eligible farmers in notified areas meeting water-conservation conditions.","https://raitamitra.karnataka.gov.in/","karnataka farmer"],
+["Employment and Youth","PM Kaushal Vikas Yojana","Eligible youth seeking skill training and certification.","https://www.skillindiadigital.gov.in/","age18"],
+["Employment and Youth","MGNREGA","Rural household members aged 18+ willing to perform unskilled manual work.","https://nrega.dord.gov.in/","age18 rural"],
+["Employment and Youth","PM Employment Generation Programme","Individuals aged 18+ establishing eligible new micro-enterprises.","https://www.kviconline.gov.in/pmegpeportal/","age18"],
+["Employment and Youth","PM Mudra Yojana","Individuals and eligible micro-businesses seeking business loans.","https://www.mudra.org.in/","age18"],
+["Employment and Youth","Yuva Nidhi Karnataka","Eligible unemployed Karnataka graduates and diploma holders; other conditions apply.","https://sevasindhu.karnataka.gov.in/","karnataka unemployed ug"],
+["Employment and Youth","National Apprenticeship Promotion Scheme","Eligible apprentices and establishments.","https://www.apprenticeshipindia.gov.in/","age18"],
+["Housing and Basic Facilities","PM Awas Yojana Gramin","Eligible rural houseless households without a pucca house.","https://pmayg.nic.in/","rural nohouse"],
+["Housing and Basic Facilities","PM Awas Yojana Urban 2.0","Eligible urban families without a pucca house.","https://pmay-urban.gov.in/","nohouse"],
+["Housing and Basic Facilities","Basava Vasati Karnataka","Eligible economically weaker and houseless families.","https://ashraya.karnataka.gov.in/","karnataka nohouse income"],
+["Housing and Basic Facilities","Ambedkar Housing Karnataka","Eligible SC/ST houseless or economically weaker households.","https://ashraya.karnataka.gov.in/","karnataka sc st nohouse"],
+["Housing and Basic Facilities","PM Surya Ghar Muft Bijli","Eligible residential electricity consumers.","https://pmsuryaghar.gov.in/",""],
+["Health and Medical","Ayushman Bharat PM-JAY","Eligible poor and vulnerable families under beneficiary criteria.","https://pmjay.gov.in/","income"],
+["Health and Medical","Arogya Karnataka","Eligible Karnataka residents under state health coverage rules.","https://arogyakarnataka.karnataka.gov.in/","karnataka"],
+["Health and Medical","Janani Suraksha Yojana","Eligible pregnant women under scheme conditions.","https://nhm.gov.in/","female pregnant"],
+["Health and Medical","National Health Mission","Eligible communities accessing public health services.","https://nhm.gov.in/",""],
+["Health and Medical","Janaushadhi Pariyojana","All citizens can purchase affordable medicines at authorised centres.","https://janaushadhi.gov.in/",""],
+["Insurance, Pension and Banking","Jan Dhan Yojana","Eligible Indian residents seeking basic bank accounts.","https://pmjdy.gov.in/",""],
+["Insurance, Pension and Banking","Jeevan Jyoti Bima Yojana","Eligible bank or post-office account holders aged 18–50.","https://jansuraksha.gov.in/","age18 age50"],
+["Insurance, Pension and Banking","Suraksha Bima Yojana","Eligible bank or post-office account holders aged 18–70.","https://jansuraksha.gov.in/","age18 age70"],
+["Insurance, Pension and Banking","Atal Pension Yojana","Eligible citizens aged 18–40 with a savings account; income-tax payers excluded from joining.","https://www.npscra.nsdl.co.in/","age18 age40"],
+["Insurance, Pension and Banking","National Social Assistance Programme","Eligible elderly people, widows and persons with disabilities from qualifying low-income households.","https://nsap.nic.in/","income disability"],
+["Insurance, Pension and Banking","Sandhya Suraksha Karnataka","Eligible senior citizens meeting Karnataka age and income conditions.","https://sevasindhu.karnataka.gov.in/","karnataka age60 income"],
+["Food and Ration","PM Garib Kalyan Anna Yojana","Eligible Antyodaya and Priority Household ration-card beneficiaries.","https://nfsa.gov.in/",""],
+["Food and Ration","Anna Bhagya Karnataka","Eligible BPL and Antyodaya ration-card households.","https://ahara.kar.nic.in/","karnataka"],
+["Food and Ration","One Nation One Ration Card","Eligible NFSA ration-card beneficiaries across participating states.","https://impds.nic.in/",""],
+["Business and Self-Employment","PM Vishwakarma","Traditional artisans and craftspeople in notified trades aged 18+.","https://pmvishwakarma.gov.in/","age18"],
+["Business and Self-Employment","Stand-Up India","Eligible SC/ST and women entrepreneurs establishing greenfield enterprises.","https://www.standupmitra.in/","sc st female"],
+["Business and Self-Employment","Startup India","Eligible startups meeting DPIIT recognition criteria.","https://www.startupindia.gov.in/",""],
+["Business and Self-Employment","PM SVANidhi","Eligible street vendors meeting identification and lending requirements.","https://pmsvanidhi.mohua.gov.in/",""],
+["Business and Self-Employment","DAY-NULM","Eligible urban poor seeking livelihood and skills support.","https://nulm.gov.in/",""],
+["Disability and Social Welfare","ADIP Scheme","Eligible persons with disabilities requiring assistive devices.","https://depwd.gov.in/","disability"],
+["Disability and Social Welfare","Scholarships for Students with Disabilities","Eligible students with benchmark disabilities under scholarship rules.","https://scholarships.gov.in/","disability post"],
+["Official Portals","National Scholarship Portal","Central and state scholarship application portal; find schemes and apply where applications are open.","https://scholarships.gov.in/",""],
+["Official Portals","Karnataka SSP","Karnataka student scholarship portal.","https://ssp.karnataka.gov.in/","karnataka"],
+["Official Portals","MyScheme","Search government schemes and check official eligibility information.","https://www.myscheme.gov.in/",""],
+["Official Portals","National Portal of India","Government services and information.","https://www.india.gov.in/",""]
+];
+
+const $ = id => document.getElementById(id);
+const norm = s => (s||"").toLowerCase();
+function profile(){return {
+state:$("state").value,edu:$("education").value,marks:$("marks").value===""?null:Number($("marks").value),
+income:$("income").value===""?null:Number($("income").value),cat:$("category").value,gender:$("gender").value,
+age:$("age").value===""?null:Number($("age").value),disability:$("disability").value,region:$("region").value,
+farmer:$("farmer").value,orphan:$("orphan").value,worker:$("worker").value,rural:$("rural").value,
+house:$("house").value,pregnant:$("pregnant").value,unemployed:$("unemployed").value
+}}
+function evaluate(s,p){
+ const t=norm(s[2]+" "+s[4]+" "+s[0]), e=norm(p.edu), c=norm(p.cat);
+ let checks=[],fails=[];
+ const test=(condition,ok,msg)=>{if(condition!==null){(ok?checks:fails).push(msg)}};
+ if(t.includes("karnataka")) test(p.state?true:null,p.state==="Karnataka","Karnataka residence");
+ if(t.includes("sc")) test(p.cat?true:null,p.cat==="SC","SC category");
+ if(t.includes("st")) test(p.cat?true:null,p.cat==="ST","ST category");
+ if(t.includes("obc")) test(p.cat?true:null,["OBC","Category I","IIA","IIB","IIIA","IIIB"].includes(p.cat),"OBC/backward-class category");
+ if(t.includes("minority")) test(p.cat?true:null,p.cat==="Minority","notified minority community");
+ if(t.includes("brahmin")) test(p.cat?true:null,p.cat==="Brahmin","Brahmin category");
+ if(t.includes("female")) test(p.gender?true:null,p.gender==="Female","female applicant");
+ if(t.includes("disability")) test(p.disability?true:null,p.disability==="yes","benchmark disability");
+ if(t.includes("farmer")) test(p.farmer?true:null,p.farmer==="yes","farmer/agricultural family");
+ if(t.includes("worker")) test(p.worker?true:null,p.worker==="yes","registered eligible worker in family");
+ if(t.includes("orphan")) test(p.orphan?true:null,p.orphan==="yes","orphan/specified family circumstance");
+ if(t.includes("region")) test(p.region?true:null,p.region==="yes","North Eastern Region residence");
+ if(t.includes("pregnant")) test(p.pregnant?true:null,p.pregnant==="yes","pregnancy/lactation condition");
+ if(t.includes("rural")) test(p.rural?true:null,p.rural==="yes","rural household");
+ if(t.includes("nohouse")) test(p.house?true:null,p.house==="no","no pucca house");
+ if(t.includes("unemployed")) test(p.unemployed?true:null,p.unemployed==="yes","unemployed status");
+ if(t.includes("school")) test(p.edu?true:null,["Class 8","Class 9","Class 10","Class 11","Class 12"].includes(p.edu),"school-level study");
+ if(t.includes("post")) test(p.edu?true:null,["Class 11","Class 12","Diploma","Undergraduate / Degree","Engineering / Technical Degree","Medical","Agriculture","Postgraduate","PhD / Research"].includes(p.edu),"post-matric education");
+ if(t.includes("higher")) test(p.edu?true:null,["Undergraduate / Degree","Engineering / Technical Degree","Medical","Agriculture","Postgraduate","PhD / Research"].includes(p.edu),"higher education");
+ if(t.includes("technical")) test(p.edu?true:null,["Diploma","Engineering / Technical Degree"].includes(p.edu),"technical diploma/degree");
+ if(t.includes("agriculture")) test(p.edu?true:null,p.edu==="Agriculture","agriculture course");
+ if(t.includes("pg")) test(p.edu?true:null,p.edu==="Postgraduate","postgraduate study");
+ if(t.includes("research")) test(p.edu?true:null,p.edu==="PhD / Research","research study");
+ if(t.includes("ug")) test(p.edu?true:null,["Undergraduate / Degree","Engineering / Technical Degree","Medical","Agriculture"].includes(p.edu),"undergraduate study");
+ if(t.includes("age18")) test(p.age!==null,p.age!==null&&p.age>=18,"minimum age 18");
+ if(t.includes("age10")) test(p.age!==null,p.age!==null&&p.age<10,"girl child below age 10");
+ if(t.includes("age40")) test(p.age!==null,p.age!==null&&p.age<=40,"age limit 40");
+ if(t.includes("age50")) test(p.age!==null,p.age!==null&&p.age<=50,"age limit 50");
+ if(t.includes("age60")) test(p.age!==null,p.age!==null&&p.age>=60,"senior citizen age");
+ if(t.includes("age70")) test(p.age!==null,p.age!==null&&p.age<=70,"age limit 70");
+ if(t.includes("income450000")) test(p.income!==null,p.income!==null&&p.income<=450000,"family income up to ₹4.5 lakh");
+ if(t.includes("income")&&!t.includes("income450000")) test(p.income!==null,true,"income limit applies; verify exact limit");
+ // NMMS merit is not safely reducible to a single universal percentage.
+ if(s[1]==="NMMS" && p.marks!==null) checks.push("marks entered; check state-specific NMMS minimum");
+ // Generic scholarship entries with merit conditions
+ if((t.includes("merit")||t.includes("marks"))&&p.marks!==null) checks.push("marks entered; verify scheme's current merit cutoff");
+ const hasKnownMismatch=fails.length>0;
+ const points=checks.length;
+ const status=hasKnownMismatch?"May not match":"Possible match";
+ return {status,checks,fails,points};
+}
+function runCheck(){
+ const p=profile();
+ if(p.marks!==null&&(p.marks<0||p.marks>100)){alert("Marks must be between 0 and 100.");return}
+ if(p.income!==null&&p.income<0){alert("Income cannot be negative.");return}
+ const scored=schemes.map(s=>({s,r:evaluate(s,p)})).filter(x=>x.r.status==="Possible match");
+ scored.sort((a,b)=>b.r.points-a.r.points);
+ $("results").classList.remove("hidden");
+ $("resultSummary").textContent=`${scored.length} schemes have no obvious mismatch based on the details supplied. Schemes with missing details may still appear.`;
+ $("matchList").innerHTML=scored.map(({s,r})=>`<article class="result"><span class="tag possible">Possible match</span><span class="tag">${s[0]}</span><h3>${s[1]}</h3><p>${s[2]}</p>${r.checks.length?`<p class="muted"><b>Matched / to verify:</b> ${r.checks.join("; ")}</p>`:"<p class='muted'>More details may be needed to assess this scheme.</p>"}<a href="${s[3]}" target="_blank" rel="noopener">Open official website ↗</a></article>`).join("") || "<p>No potential matches found. Try checking your details or browse all schemes.</p>";
+}
+function renderBrowse(){
+ const categories=[...new Set(schemes.map(s=>s[0]))];
+ $("categoryFilter").innerHTML='<option value="">All categories</option>'+categories.map(c=>`<option>${c}</option>`).join("");
+ function draw(){
+  const q=norm($("search").value),cat=$("categoryFilter").value;
+  const filtered=schemes.filter(s=>(!cat||s[0]===cat)&&norm(s.join(" ")).includes(q));
+  $("count").textContent=`Showing ${filtered.length} of ${schemes.length} entries`;
+  $("schemeList").innerHTML=filtered.map(s=>`<article class="scheme"><span class="tag">${s[0]}</span><h3>${s[1]}</h3><p>${s[2]}</p><a href="${s[3]}" target="_blank" rel="noopener">Official website ↗</a></article>`).join("");
+ }
+ $("search").addEventListener("input",draw);$("categoryFilter").addEventListener("change",draw);draw();
+}
+document.querySelectorAll("nav button").forEach(btn=>btn.addEventListener("click",()=>{
+ document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));btn.classList.add("active");
+ document.querySelectorAll(".tab").forEach(t=>t.classList.add("hidden"));$(btn.dataset.tab).classList.remove("hidden");
+}));
+$("checkBtn").addEventListener("click",runCheck);
+$("resetBtn").addEventListener("click",()=>{document.querySelectorAll("#checker input").forEach(i=>i.value="");document.querySelectorAll("#checker select").forEach(s=>s.selectedIndex=0);$("results").classList.add("hidden")});
+renderBrowse();
+</script>
+</body>
+</html>
