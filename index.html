@@ -1,1 +1,387 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scholarship and Government Schemes Eligible Checker</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#eef3f9;color:#172033}
+header{background:#102a43;color:white;text-align:center;padding:25px 15px}
+header h2{font-size:22px;margin-bottom:10px}
+header p{margin:6px;font-size:14px}
+nav{display:flex;justify-content:center;gap:10px;background:#164e63;padding:12px;flex-wrap:wrap}
+nav button{background:#fff;color:#164e63;border:none;padding:10px 18px;border-radius:7px;font-weight:bold;cursor:pointer}
+.page{display:none;padding:20px;max-width:1100px;margin:auto}
+.page.active{display:block}
+.card{background:white;padding:22px;border-radius:14px;box-shadow:0 4px 15px #0001;margin-bottom:20px}
+h2,h3{margin-bottom:15px;color:#164e63}
+label{display:block;font-weight:bold;margin:13px 0 6px}
+input,select{width:100%;padding:12px;border:1px solid #ccd5df;border-radius:7px;font-size:15px}
+.btn{padding:12px 18px;border:none;border-radius:7px;background:#164e63;color:white;font-size:15px;cursor:pointer;margin-top:15px}
+.btn.secondary{background:#64748b}
+.btn.green{background:#15803d}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.scheme{border:1px solid #dbe4ee;padding:17px;border-radius:10px;background:#fff;margin-bottom:12px}
+.scheme h3{font-size:17px}
+.scheme p{margin:8px 0;line-height:1.5}
+.scheme a{display:inline-block;margin-top:10px;color:#075985;font-weight:bold}
+.badge{background:#dcfce7;color:#166534;padding:5px 9px;border-radius:5px;font-size:12px}
+#search{margin-bottom:15px}
+footer{text-align:center;padding:20px;color:#64748b;font-size:13px}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>SEA COLLEGE OF ENGINEERING AND TECHNOLOGY</h2>
+<p><b>Project:</b> Scholarship and Government Schemes Eligible Checker</p>
+<p><b>Student Name:</b> Praveen.M</p>
+<p><b>Department:</b> CSE</p>
+</header>
+
+<nav>
+<button onclick="showPage('home')">Home</button>
+<button onclick="showPage('checker')">Eligibility Checker</button>
+<button onclick="showPage('all')">All Schemes</button>
+</nav>
+
+<!-- PAGE 1 -->
+<section id="home" class="page active">
+<div class="card" style="text-align:center">
+<h2>Scholarship & Government Schemes</h2>
+<p style="line-height:1.8">
+Find scholarships and government schemes based on your eligibility.
+Check educational scholarships, agriculture schemes, women's schemes,
+health schemes, employment schemes and social security benefits.
+</p>
+<button class="btn" onclick="showPage('checker')">Check My Eligibility</button>
+<button class="btn secondary" onclick="showPage('all')">View All Schemes</button>
+</div>
+
+<div class="card">
+<h3>About Project</h3>
+<p>Project developed by Praveen.M</p>
+<p>Department: Computer Science and Engineering</p>
+<p>SEA College of Engineering and Technology</p>
+</div>
+</section>
+
+<!-- PAGE 2 -->
+<section id="checker" class="page">
+<div class="card">
+<h2>Eligibility Checking</h2>
+
+<form id="eligibilityForm">
+<div class="grid">
+
+<div>
+<label>Student / Applicant Name</label>
+<input id="name" placeholder="Enter your name">
+</div>
+
+<div>
+<label>State</label>
+<select id="state">
+<option value="">Select State</option>
+<option>Karnataka</option><option>Maharashtra</option>
+<option>Tamil Nadu</option><option>Kerala</option>
+<option>Telangana</option><option>Andhra Pradesh</option>
+<option>Uttar Pradesh</option><option>Rajasthan</option>
+<option>Madhya Pradesh</option><option>Gujarat</option>
+<option>Bihar</option><option>West Bengal</option>
+<option>Other</option>
+</select>
+</div>
+
+<div>
+<label>Education Level</label>
+<select id="education">
+<option value="">Select Education</option>
+<option>Class 8</option><option>Class 9-10</option>
+<option>Class 11-12</option><option>Diploma</option>
+<option>Undergraduate</option><option>Postgraduate</option>
+<option>PhD / Research</option>
+</select>
+</div>
+
+<div>
+<label>Category</label>
+<select id="category">
+<option value="">Select Category</option>
+<option>General</option><option>SC</option><option>ST</option>
+<option>OBC</option><option>EBC</option><option>DNT</option>
+<option>Minority</option><option>PwD</option>
+</select>
+</div>
+
+<div>
+<label>Gender</label>
+<select id="gender">
+<option value="">Select Gender</option>
+<option>Male</option><option>Female</option><option>Other</option>
+</select>
+</div>
+
+<div>
+<label>Percentage of Marks (%)</label>
+<input type="number" id="marks" min="0" max="100" placeholder="Enter percentage">
+</div>
+
+<div>
+<label>Annual Family Income (₹)</label>
+<input type="number" id="income" placeholder="Enter annual income">
+</div>
+
+<div>
+<label>Age</label>
+<input type="number" id="age" placeholder="Enter age">
+</div>
+
+<div>
+<label>Disability (Benchmark Disability)</label>
+<select id="disability"><option>No</option><option>Yes</option></select>
+</div>
+
+<div>
+<label>North Eastern Region</label>
+<select id="ner"><option>No</option><option>Yes</option></select>
+</div>
+
+<div>
+<label>Technical Course</label>
+<select id="technical"><option>No</option><option>Yes</option></select>
+</div>
+
+<div>
+<label>State Domicile</label>
+<input id="domicile" placeholder="Enter domicile state">
+</div>
+
+</div>
+
+<button class="btn" type="submit">Submit & Check Eligibility</button>
+<button class="btn secondary" type="reset">Reset</button>
+</form>
+</div>
+</section>
+
+<!-- PAGE 3 -->
+<section id="results" class="page">
+<div class="card">
+<h2>Eligible Schemes</h2>
+<p id="resultInfo"></p>
+<button class="btn secondary" onclick="showPage('checker')">Edit Eligibility</button>
+</div>
+<div id="resultsList"></div>
+</section>
+
+<!-- ALL SCHEMES -->
+<section id="all" class="page">
+<div class="card">
+<h2>All Scholarships & Government Schemes</h2>
+<input id="search" placeholder="Search scheme..." oninput="renderAll()">
+<p id="count"></p>
+<div id="allList"></div>
+</div>
+</section>
+
+<footer>
+Eligibility summaries are indicative. Verify official guidelines, income limits,
+deadlines and course requirements before applying.
+</footer>
+
+<script>
+const scholarshipPortal="https://scholarships.gov.in/";
+const schemePortal="https://www.myscheme.gov.in/";
+
+const data=[
+["NMMS","Scholarship","Class 8; marks and family income conditions.","https://scholarships.gov.in/"],
+["PM YASASVI School","Scholarship","OBC/EBC/DNT students in eligible schools; income and school criteria.","https://scholarships.gov.in/"],
+["Disability Pre-Matric","Scholarship","Students with benchmark disabilities; income conditions.","https://scholarships.gov.in/"],
+["Beedi/Cine Pre-Matric","Scholarship","Children of eligible workers; employment and income conditions.","https://scholarships.gov.in/"],
+["PM-USP CSSS","Scholarship","Class 12 above 80th percentile; regular degree; income up to ₹4.5 lakh.","https://scholarships.gov.in/"],
+["PM YASASVI College","Scholarship","OBC/EBC/DNT students in eligible colleges; income conditions.","https://scholarships.gov.in/"],
+["Top Class SC","Scholarship","SC students in notified institutions; income generally up to ₹8 lakh.","https://scholarships.gov.in/"],
+["Top Class ST","Scholarship","ST students in notified institutions; income and institution criteria.","https://scholarships.gov.in/"],
+["Disability Post-Matric","Scholarship","Students with benchmark disabilities; income conditions.","https://scholarships.gov.in/"],
+["Disability Top Class","Scholarship","Students with benchmark disabilities in eligible institutions.","https://scholarships.gov.in/"],
+["National PG Scholarship","Scholarship","Eligible postgraduate students; merit criteria.","https://scholarships.gov.in/"],
+["Ishan Uday","Scholarship","North Eastern Region UG students; income and admission criteria.","https://scholarships.gov.in/"],
+["NEC Merit","Scholarship","North Eastern Region professional course students; merit and income criteria.","https://scholarships.gov.in/"],
+["AICTE Pragati","Scholarship","Girl students in technical degree/diploma; income up to ₹8 lakh.","https://scholarships.gov.in/"],
+["AICTE Saksham","Scholarship","Students with disabilities in technical courses; income criteria.","https://scholarships.gov.in/"],
+["AICTE Swanath","Scholarship","Orphans, wards of COVID victims or armed forces personnel martyred in action; technical courses.","https://scholarships.gov.in/"],
+["PM CAPF Scholarship","Scholarship","Eligible wards/widows of CAPF and Assam Rifles; merit and course criteria.","https://scholarships.gov.in/"],
+["PM RPF Scholarship","Scholarship","Eligible wards/widows of RPF/RPSF personnel.","https://scholarships.gov.in/"],
+["PM Railway Scholarship","Scholarship","Eligible railway personnel wards/widows.","https://scholarships.gov.in/"],
+["PM Martyred Police Scholarship","Scholarship","Children of police personnel martyred in terror/Naxal attacks.","https://scholarships.gov.in/"],
+["ICAR NTS UG","Scholarship","Eligible agricultural undergraduate students.","https://icar.org.in/"],
+["ICAR PG Scholarship","Scholarship","Eligible agricultural postgraduate students.","https://icar.org.in/"],
+["ICAR NTS PG","Scholarship","Eligible postgraduate agricultural students.","https://icar.org.in/"],
+["ICAR JRF/SRF","Scholarship","Eligible agricultural research candidates.","https://icar.org.in/"],
+["Renewable Energy Fellowship","Scholarship","Eligible renewable-energy research students.","https://mnre.gov.in/"],
+["ISI Stipend","Scholarship","Eligible ISI undergraduate/postgraduate students.","https://www.isical.ac.in/"],
+["INSPIRE SHE","Scholarship","Meritorious students pursuing eligible science degrees.","https://online-inspire.gov.in/"],
+["SC/ST National Fellowship","Scholarship","Eligible SC/ST research/PhD candidates.","https://scholarships.gov.in/"],
+["UGC NET JRF","Scholarship","Candidates qualifying NET/JRF for research.","https://ugcnet.nta.ac.in/"],
+["AICTE PG Scholarship","Scholarship","Eligible GATE/GPAT students in approved PG technical courses.","https://www.aicte-india.org/"],
+["PMRF","Scholarship","High-performing candidates in eligible PhD programmes.","https://pmrf.in/"],
+["State Post-Matric Scholarships","Scholarship","Eligible SC/ST/OBC/minority students; income and state rules.","https://scholarships.gov.in/"],
+["Karnataka SSP","Scholarship","Eligible Karnataka students; category, income and course rules.","https://ssp.karnataka.gov.in/"],
+["Maharashtra MahaDBT","Scholarship","Eligible Maharashtra students; category, income and course rules.","https://mahadbt.maharashtra.gov.in/"],
+["Tamil Nadu Scholarships","Scholarship","Eligible students; state/category criteria.","https://www.tn.gov.in/"],
+["Kerala E-Grantz","Scholarship","Eligible students; category and income criteria.","https://egrantz.kerala.gov.in/"],
+["Telangana ePASS","Scholarship","Eligible students; category, income and course criteria.","https://telanganaepass.cgg.gov.in/"],
+["Andhra Pradesh Scholarships","Scholarship","Eligible students; state and income criteria.","https://jnanabhumi.ap.gov.in/"],
+["UP Scholarship","Scholarship","Eligible UP students; class, category and income criteria.","https://scholarship.up.gov.in/"],
+["Rajasthan Scholarships","Scholarship","Eligible Rajasthan students; category and income criteria.","https://sje.rajasthan.gov.in/"],
+["MP Scholarships","Scholarship","Eligible MP students; category and income criteria.","https://scholarshipportal.mp.nic.in/"],
+["Gujarat Digital Gujarat","Scholarship","Eligible Gujarat students; category and income criteria.","https://www.digitalgujarat.gov.in/"],
+["Bihar Scholarships","Scholarship","Eligible Bihar students; category and income criteria.","https://medhasoft.bih.nic.in/"],
+["West Bengal SVMCM/Aikyashree","Scholarship","Eligible students; merit, category and income criteria.","https://svmcm.wb.gov.in/"],
+["National Scholarship Portal","Education","Eligible students under specific scholarship conditions.","https://scholarships.gov.in/"],
+["PM Vidyalaxmi","Education","Students in specified higher education institutions.","https://pmvidyalaxmi.co.in/"],
+["PM-USP Special Scholarship","Education","Eligible students from J&K and Ladakh.","https://scholarships.gov.in/"],
+["PM-KISAN","Agriculture","Eligible landholding farmer families.","https://pmkisan.gov.in/"],
+["KCC","Agriculture","Farmers and eligible agricultural borrowers.","https://www.myscheme.gov.in/"],
+["PM Fasal Bima Yojana","Agriculture","Farmers growing notified crops.","https://pmfby.gov.in/"],
+["PM-KUSUM","Agriculture","Eligible farmers and agricultural entities.","https://pmkusum.mnre.gov.in/"],
+["Soil Health Card","Agriculture","Farmers.","https://soilhealth.dac.gov.in/"],
+["PM Kisan Maandhan","Agriculture","Small and marginal farmers aged 18–40.","https://pmkmy.gov.in/"],
+["Agriculture Infrastructure Fund","Agriculture","Eligible agricultural businesses and entities.","https://agriinfra.dac.gov.in/"],
+["PM Matsya Sampada","Agriculture","Eligible fishers and fisheries businesses.","https://pmmsy.dof.gov.in/"],
+["PM Matru Vandana","Women","Eligible pregnant and lactating women.","https://pmmvy.wcd.gov.in/"],
+["Sukanya Samriddhi","Women","Girl child below 10.","https://www.nsiindia.gov.in/"],
+["Beti Bachao Beti Padhao","Women","Girl children and communities.","https://wcd.gov.in/"],
+["Ujjwala 2.0","Women","Eligible poor households without LPG connection.","https://www.pmuy.gov.in/"],
+["DAY-NRLM","Women","Rural women SHGs.","https://aajeevika.gov.in/"],
+["One Stop Centre","Women","Women affected by violence.","https://wcd.gov.in/"],
+["Working Women Hostel","Women","Eligible working women.","https://wcd.gov.in/"],
+["Ayushman Bharat PM-JAY","Health","Eligible beneficiary families.","https://pmjay.gov.in/"],
+["Ayushman Vay Vandana","Health","Senior citizens aged 70+.","https://pmjay.gov.in/"],
+["Janani Suraksha","Health","Eligible pregnant women.","https://nhm.gov.in/"],
+["JSSK","Health","Pregnant women and sick newborns/infants.","https://nhm.gov.in/"],
+["Nikshay Poshan","Health","Registered TB patients.","https://nikshay.in/"],
+["Rashtriya Arogya Nidhi","Health","Eligible poor patients with serious diseases.","https://mohfw.gov.in/"],
+["PMAY-Gramin","Housing","Eligible rural households without adequate housing.","https://pmayg.nic.in/"],
+["PMAY-Urban","Housing","Eligible urban households.","https://pmay-urban.gov.in/"],
+["PM Surya Ghar","Housing","Eligible residential electricity consumers.","https://pmsuryaghar.gov.in/"],
+["Jal Jeevan Mission","Housing","Rural households.","https://jaljeevanmission.gov.in/"],
+["Swachh Bharat Mission","Housing","Eligible households and communities.","https://swachhbharatmission.gov.in/"],
+["NFSA","Housing","Eligible priority households and Antyodaya families.","https://nfsa.gov.in/"],
+["PM Mudra","Employment","Eligible micro-businesses.","https://www.mudra.org.in/"],
+["PM Vishwakarma","Employment","Eligible traditional artisans.","https://pmvishwakarma.gov.in/"],
+["PM SVANidhi","Employment","Eligible street vendors.","https://pmsvanidhi.mohua.gov.in/"],
+["Stand-Up India","Employment","SC/ST and women entrepreneurs.","https://www.standupmitra.in/"],
+["PMEGP","Employment","Eligible new micro-enterprises.","https://www.kviconline.gov.in/pmegpeportal/"],
+["Startup India","Employment","DPIIT-recognized eligible startups.","https://www.startupindia.gov.in/"],
+["PMKVY","Employment","Eligible skill-training candidates.","https://www.skillindia.gov.in/"],
+["NAPS","Employment","Eligible apprentices and establishments.","https://www.apprenticeshipindia.gov.in/"],
+["Atal Pension Yojana","Pension","Eligible citizens aged 18–40.","https://www.npscra.nsdl.co.in/"],
+["PM Shram Yogi Maandhan","Pension","Eligible unorganized workers aged 18–40.","https://maandhan.in/"],
+["PM Suraksha Bima","Pension","Eligible bank account holders aged 18–70.","https://www.jansuraksha.gov.in/"],
+["PM Jeevan Jyoti Bima","Pension","Eligible bank account holders aged 18–50.","https://www.jansuraksha.gov.in/"],
+["IGNOAPS","Pension","Eligible elderly people from poor households.","https://nsap.nic.in/"],
+["IGNWPS","Pension","Eligible widows from poor households.","https://nsap.nic.in/"],
+["IGNDPS","Pension","Eligible persons with disabilities from poor households.","https://nsap.nic.in/"],
+["e-Shram","Pension","Eligible unorganized workers.","https://eshram.gov.in/"]
+];
+
+function showPage(id){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+window.scrollTo(0,0);
+}
+
+function card(s){
+return `<div class="scheme">
+<h3>${s[0]}</h3>
+<span class="badge">${s[1]}</span>
+<p>${s[2]}</p>
+<a href="${s[3]}" target="_blank" rel="noopener">Official Website ↗</a>
+</div>`;
+}
+
+function renderAll(){
+const q=document.getElementById("search").value.toLowerCase();
+const filtered=data.filter(s=>s.join(" ").toLowerCase().includes(q));
+document.getElementById("count").innerText="Showing "+filtered.length+" schemes";
+document.getElementById("allList").innerHTML=filtered.map(card).join("");
+}
+renderAll();
+
+document.getElementById("eligibilityForm").addEventListener("submit",function(e){
+e.preventDefault();
+
+const category=document.getElementById("category").value;
+const gender=document.getElementById("gender").value;
+const education=document.getElementById("education").value;
+const marks=Number(document.getElementById("marks").value);
+const income=Number(document.getElementById("income").value);
+const state=document.getElementById("state").value;
+const age=Number(document.getElementById("age").value);
+const disability=document.getElementById("disability").value;
+const ner=document.getElementById("ner").value;
+const technical=document.getElementById("technical").value;
+
+let eligible=data.filter(s=>{
+const name=s[0].toLowerCase();
+let ok=true;
+
+// Category-based screening
+if(name.includes("top class sc") && category!=="SC") ok=false;
+if(name.includes("top class st") && category!=="ST") ok=false;
+if(name.includes("sc/st national") && !["SC","ST"].includes(category)) ok=false;
+
+// Education screening
+if(name==="NMMS" && education!=="Class 8") ok=false;
+if(name==="PM-USP CSSS" && !["Class 11-12","Undergraduate"].includes(education)) ok=false;
+if(name==="National PG Scholarship" && education!=="Postgraduate") ok=false;
+if(name==="PMRF" && education!=="PhD / Research") ok=false;
+
+// Gender screening
+if(name==="AICTE Pragati" && gender!=="Female") ok=false;
+
+// Disability screening
+if(name.includes("disability") && disability!=="Yes") ok=false;
+if(name==="AICTE Saksham" && disability!=="Yes") ok=false;
+
+// Technical course screening
+if(name.startsWith("aicte") && technical!=="Yes") ok=false;
+
+// Income screening
+if(name==="PM-USP CSSS" && income>450000) ok=false;
+if(name==="AICTE Pragati" && income>800000) ok=false;
+if(name==="Top Class SC" && income>800000) ok=false;
+
+// Region screening
+if(name==="Ishan Uday" && ner!=="Yes") ok=false;
+if(name==="NEC Merit" && ner!=="Yes") ok=false;
+
+// State schemes
+if(name==="Karnataka SSP" && state!=="Karnataka") ok=false;
+if(name==="Maharashtra MahaDBT" && state!=="Maharashtra") ok=false;
+if(name==="Tamil Nadu Scholarships" && state!=="Tamil Nadu") ok=false;
+if(name==="Kerala E-Grantz" && state!=="Kerala") ok=false;
+if(name==="Telangana ePASS" && state!=="Telangana") ok=false;
+if(name==="Andhra Pradesh Scholarships" && state!=="Andhra Pradesh") ok=false;
+if(name==="UP Scholarship" && state!=="Uttar Pradesh") ok=false;
+if(name==="Rajasthan Scholarships" && state!=="Rajasthan") ok=false;
+if(name==="MP Scholarships" && state!=="Madhya Pradesh") ok=false;
+if(name==="Gujarat Digital Gujarat" && state!=="Gujarat") ok=false;
+if(name==="Bihar Scholarships" && state!=="Bihar") ok=false;
+if(name==="West Bengal SVMCM/Aikyashree" && state!=="West Bengal") ok=false;
+
+return ok;
+});
+
+document.getElementById("resultInfo").innerText=
+"Applicant: "+(document.getElementById("name").value||"Student")+
+" | Eligible matching schemes: "+eligible.length+
+" | Results are indicative and require official verification.";
+
+docum
